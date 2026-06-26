@@ -30,6 +30,168 @@
     content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
   <meta name="twitter:image" content="https://temputils.com/og-image.png">
 
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://temputils.com/#website",
+        "url": "https://temputils.com/",
+        "name": "TempUtils",
+        "description": "Temporary Tools for Everyone — Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install.",
+        "publisher": { "@id": "https://temputils.com/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://temputils.com/#org",
+        "name": "TempUtils",
+        "url": "https://temputils.com/",
+        "logo": "https://temputils.com/logo.svg"
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://temputils.com/#tools",
+        "name": "TempUtils Tools",
+        "description": "A collection of temporary online tools — no sign-up, no install, use and go.",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Note",
+              "description": "Jot content and share via a unique link. No account needed — gone when you close it.",
+              "url": "https://tempnote.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Table",
+              "description": "Create and edit simple tables online, export when done. Great for quick data gathering.",
+              "url": "https://temptable.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp File",
+              "description": "Upload a file, get a temp download link, share instantly. Auto-deleted after expiry.",
+              "url": "https://tempfile.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Board",
+              "description": "Infinite canvas for free drawing. Share a live link for real-time viewing.",
+              "url": "https://tempboard.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Chat",
+              "description": "Create a temporary chat room instantly with real-time messaging, shareable links, and 24-hour auto-expiry.",
+              "url": "https://tempchat.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Email",
+              "description": "Open a random disposable inbox instantly and read incoming HTML or plain-text emails in a lightweight viewer.",
+              "url": "https://tempemail.asia/",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Code",
+              "description": "Open a random snippet URL and start coding immediately with auto-save and Monaco-powered editing.",
+              "url": "https://tempcode.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Cron",
+              "description": "Create and preview scheduled tasks with structured controls for text jobs and outbound request jobs.",
+              "url": "https://tempcron.temputils.com",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Video",
+              "description": "Launch a temporary multi-user video room with live audio/video, shareable links, and auto-expiry.",
+              "url": "https://github.com/hoa-js/examples/tree/master/tempvideo",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Temp Voice",
+              "description": "Join a temporary multi-user voice room with low-latency audio and simple shareable room links.",
+              "url": "https://github.com/hoa-js/examples/tree/master/tempvoice",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Prevent theme flash (FOUC) -->
   <script>
     (function () {
