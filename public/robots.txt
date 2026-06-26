@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://temputils.com/sitemap.xml
