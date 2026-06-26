@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="meta.title">TempUtils — Temporary Tools for Everyone</title>
-  <meta name="description" data-i18n-content="meta.description"
-    content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
+  <meta name="description" data-i18n-content="meta.description" content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
   <link rel="canonical" href="https://temputils.com/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)">
@@ -18,16 +17,14 @@
   <meta property="og:site_name" content="TempUtils">
   <meta property="og:locale" data-i18n-content="meta.locale" content="en_US">
   <meta property="og:title" data-i18n-content="meta.title" content="TempUtils — Temporary Tools for Everyone">
-  <meta property="og:description" data-i18n-content="meta.description"
-    content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
+  <meta property="og:description" data-i18n-content="meta.description" content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
   <meta property="og:url" content="https://temputils.com/">
   <meta property="og:image" content="https://temputils.com/og-image.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" data-i18n-content="meta.title" content="TempUtils — Temporary Tools for Everyone">
-  <meta name="twitter:description" data-i18n-content="meta.description"
-    content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
+  <meta name="twitter:description" data-i18n-content="meta.description" content="Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.">
   <meta name="twitter:image" content="https://temputils.com/og-image.png">
 
   <!-- Structured Data (JSON-LD) -->
@@ -196,12 +193,10 @@
   <script>
     (function () {
       try {
-        var stored = localStorage.getItem('temputils_theme');
-        var theme = (stored === 'light' || stored === 'dark')
-          ? stored
-          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.dataset.theme = theme;
-      } catch (e) { }
+        var s = localStorage.getItem('temputils_theme');
+        var t = (s === 'light' || s === 'dark') ? s : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
     })();
   </script>
 
@@ -211,23 +206,15 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-WXR9QT1LZ5');
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --white: #ffffff;
@@ -263,7 +250,6 @@
       --fuchsia: #c026d3;
       --fuchsia-light: #fdf4ff;
       --fuchsia-mid: #f5d0fe;
-      --slate: #64748b;
       --slate-light: #f8fafc;
       --slate-mid: #cbd5e1;
       --purple: #7c3aed;
@@ -700,28 +686,6 @@
       box-shadow: var(--shadow-lift);
     }
 
-    .btn-secondary {
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 12px 26px;
-      background: transparent;
-      color: var(--ink2);
-      border: 1px solid var(--border2);
-      border-radius: 10px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.18s;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .btn-secondary:hover {
-      color: var(--ink);
-      border-color: var(--ink3);
-      background: var(--surface-soft);
-    }
-
     .intro-metrics {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -875,6 +839,10 @@
       position: relative;
       overflow: hidden;
       transition: background 0.18s;
+      /* theme defaults */
+      --tool-accent: var(--accent);
+      --tool-icon-bg: var(--accent-light);
+      --tool-icon-border: var(--accent-mid);
     }
 
     .tool-card:hover {
@@ -894,7 +862,8 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 1px solid var(--border);
+      background: var(--tool-icon-bg);
+      border: 1px solid var(--tool-icon-border);
       color: var(--ink);
     }
 
@@ -906,11 +875,6 @@
       stroke-width: 1.8;
       stroke-linecap: round;
       stroke-linejoin: round;
-    }
-
-    .tool-icon svg.fill-icon {
-      fill: currentColor;
-      stroke: none;
     }
 
     .tool-icon svg.mixed-icon .fill-shape {
@@ -958,9 +922,9 @@
       font-family: 'DM Mono', monospace;
       padding: 3px 8px;
       border-radius: 5px;
-      border: 1px solid var(--border);
-      background: var(--surface-soft);
-      color: var(--ink3);
+      background: var(--tool-icon-bg);
+      border: 1px solid var(--tool-icon-border);
+      color: var(--tool-accent);
     }
 
     .tool-arrow {
@@ -974,112 +938,18 @@
       transition: all 0.18s;
     }
 
-    .tool-card {
-      --tool-accent: var(--accent);
-      --tool-icon-bg: var(--accent-light);
-      --tool-icon-border: var(--accent-mid);
-      --tool-tag-bg: var(--accent-light);
-      --tool-tag-border: var(--accent-mid);
-    }
-
-    .tool-card .tool-icon {
-      background: var(--tool-icon-bg);
-      border-color: var(--tool-icon-border);
-    }
-
-    .tool-card .tag.accent {
-      background: var(--tool-tag-bg);
-      border-color: var(--tool-tag-border);
-      color: var(--tool-accent);
-    }
-
-    .tool-theme-note {
-      --tool-accent: var(--accent);
-      --tool-icon-bg: var(--accent-light);
-      --tool-icon-border: var(--accent-mid);
-      --tool-tag-bg: var(--accent-light);
-      --tool-tag-border: var(--accent-mid);
-    }
-
-    .tool-theme-table {
-      --tool-accent: var(--green);
-      --tool-icon-bg: var(--green-light);
-      --tool-icon-border: var(--green-mid);
-      --tool-tag-bg: var(--green-light);
-      --tool-tag-border: var(--green-mid);
-    }
-
-    .tool-theme-file {
-      --tool-accent: var(--amber);
-      --tool-icon-bg: var(--amber-light);
-      --tool-icon-border: var(--amber-mid);
-      --tool-tag-bg: var(--amber-light);
-      --tool-tag-border: var(--amber-mid);
-    }
-
-    .tool-theme-board {
-      --tool-accent: var(--teal);
-      --tool-icon-bg: var(--teal-light);
-      --tool-icon-border: var(--teal-mid);
-      --tool-tag-bg: var(--teal-light);
-      --tool-tag-border: var(--teal-mid);
-    }
-
-    .tool-theme-email {
-      --tool-accent: var(--sky);
-      --tool-icon-bg: var(--sky-light);
-      --tool-icon-border: var(--sky-mid);
-      --tool-tag-bg: var(--sky-light);
-      --tool-tag-border: var(--sky-mid);
-    }
-
-    .tool-theme-code {
-      --tool-accent: var(--indigo);
-      --tool-icon-bg: var(--indigo-light);
-      --tool-icon-border: var(--indigo-mid);
-      --tool-tag-bg: var(--indigo-light);
-      --tool-tag-border: var(--indigo-mid);
-    }
-
-    .tool-theme-cron {
-      --tool-accent: var(--orange);
-      --tool-icon-bg: var(--orange-light);
-      --tool-icon-border: var(--orange-mid);
-      --tool-tag-bg: var(--orange-light);
-      --tool-tag-border: var(--orange-mid);
-    }
-
-    .tool-theme-video {
-      --tool-accent: var(--pink);
-      --tool-icon-bg: var(--pink-light);
-      --tool-icon-border: var(--pink-mid);
-      --tool-tag-bg: var(--pink-light);
-      --tool-tag-border: var(--pink-mid);
-    }
-
-    .tool-theme-chat {
-      --tool-accent: var(--fuchsia);
-      --tool-icon-bg: var(--fuchsia-light);
-      --tool-icon-border: var(--fuchsia-mid);
-      --tool-tag-bg: var(--fuchsia-light);
-      --tool-tag-border: var(--fuchsia-mid);
-    }
-
-    .tool-theme-voice {
-      --tool-accent: var(--purple);
-      --tool-icon-bg: var(--purple-light);
-      --tool-icon-border: var(--purple-mid);
-      --tool-tag-bg: var(--purple-light);
-      --tool-tag-border: var(--purple-mid);
-    }
-
-    .tool-theme-coming {
-      --tool-accent: var(--ink4);
-      --tool-icon-bg: var(--slate-light);
-      --tool-icon-border: var(--slate-mid);
-      --tool-tag-bg: var(--surface-muted);
-      --tool-tag-border: var(--border);
-    }
+    /* Tool themes — each overrides the 3 CSS vars on .tool-card */
+    .tool-theme-note   { --tool-accent: var(--accent);  --tool-icon-bg: var(--accent-light);  --tool-icon-border: var(--accent-mid);  }
+    .tool-theme-table  { --tool-accent: var(--green);   --tool-icon-bg: var(--green-light);   --tool-icon-border: var(--green-mid);   }
+    .tool-theme-file   { --tool-accent: var(--amber);   --tool-icon-bg: var(--amber-light);   --tool-icon-border: var(--amber-mid);   }
+    .tool-theme-board  { --tool-accent: var(--teal);    --tool-icon-bg: var(--teal-light);    --tool-icon-border: var(--teal-mid);    }
+    .tool-theme-email  { --tool-accent: var(--sky);     --tool-icon-bg: var(--sky-light);     --tool-icon-border: var(--sky-mid);     }
+    .tool-theme-code   { --tool-accent: var(--indigo);  --tool-icon-bg: var(--indigo-light);  --tool-icon-border: var(--indigo-mid);  }
+    .tool-theme-cron   { --tool-accent: var(--orange);  --tool-icon-bg: var(--orange-light);  --tool-icon-border: var(--orange-mid);  }
+    .tool-theme-video  { --tool-accent: var(--pink);    --tool-icon-bg: var(--pink-light);    --tool-icon-border: var(--pink-mid);    }
+    .tool-theme-chat   { --tool-accent: var(--fuchsia); --tool-icon-bg: var(--fuchsia-light); --tool-icon-border: var(--fuchsia-mid); }
+    .tool-theme-voice  { --tool-accent: var(--purple);  --tool-icon-bg: var(--purple-light);  --tool-icon-border: var(--purple-mid);  }
+    .tool-theme-coming { --tool-accent: var(--ink4);    --tool-icon-bg: var(--slate-light);   --tool-icon-border: var(--slate-mid);   }
 
     .tool-card.coming {
       opacity: 0.55;
@@ -1255,28 +1125,16 @@
       </ul>
     </div>
     <div class="nav-right">
-      <button class="nav-icon-btn theme-btn" id="themeBtn" aria-label="Toggle color theme" title="Toggle color theme">
+      <button class="nav-icon-btn" id="themeBtn" aria-label="Toggle color theme" title="Toggle color theme">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3v2.5"></path>
-          <path d="M12 18.5V21"></path>
-          <path d="M5.64 5.64l1.77 1.77"></path>
-          <path d="M16.59 16.59l1.77 1.77"></path>
-          <path d="M3 12h2.5"></path>
-          <path d="M18.5 12H21"></path>
-          <path d="M5.64 18.36l1.77-1.77"></path>
-          <path d="M16.59 7.41l1.77-1.77"></path>
+          <path d="M12 3v2.5M12 18.5V21M5.64 5.64l1.77 1.77M16.59 16.59l1.77 1.77M3 12h2.5M18.5 12H21M5.64 18.36l1.77-1.77M16.59 7.41l1.77-1.77"></path>
           <circle cx="12" cy="12" r="3.5"></circle>
         </svg>
       </button>
       <div class="lang-switcher" id="langSwitcher">
-        <button class="nav-icon-btn lang-btn" id="langBtn" aria-label="Switch language" title="Switch language"
-          aria-haspopup="true" aria-expanded="false">
+        <button class="nav-icon-btn lang-btn" id="langBtn" aria-label="Switch language" title="Switch language" aria-haspopup="true" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 12h18"></path>
-            <path d="M12 3a14.8 14.8 0 0 1 0 18"></path>
-            <path d="M12 3a14.8 14.8 0 0 0 0 18"></path>
-            <path d="M4.8 7.5h14.4"></path>
-            <path d="M4.8 16.5h14.4"></path>
+            <path d="M3 12h18M12 3a14.8 14.8 0 0 1 0 18M12 3a14.8 14.8 0 0 0 0 18M4.8 7.5h14.4M4.8 16.5h14.4"></path>
             <circle cx="12" cy="12" r="9"></circle>
           </svg>
         </button>
@@ -1303,12 +1161,10 @@
       </a>
     </div>
     <div class="intro-metrics">
-      <div class="stat"><span class="stat-num" id="toolCount"></span><span class="stat-label"
-          data-i18n="stats.tools"></span></div>
+      <div class="stat"><span class="stat-num" id="toolCount"></span><span class="stat-label" data-i18n="stats.tools"></span></div>
       <div class="stat"><span class="stat-num">0</span><span class="stat-label" data-i18n="stats.signup"></span></div>
       <div class="stat"><span class="stat-num">100%</span><span class="stat-label" data-i18n="stats.free"></span></div>
-      <div class="stat"><span class="stat-num">&#8734;</span><span class="stat-label" data-i18n="stats.growing"></span>
-      </div>
+      <div class="stat"><span class="stat-num">&#8734;</span><span class="stat-label" data-i18n="stats.growing"></span></div>
     </div>
   </div>
 
@@ -1329,36 +1185,12 @@
       <h2 class="section-heading reveal" data-i18n="features.title" data-reveal-delay="1"></h2>
       <p class="section-summary reveal" data-i18n="features.sub" data-reveal-delay="2"></p>
       <div class="benefits-grid">
-        <div class="benefit-item reveal">
-          <div class="benefit-index">01</div>
-          <div class="benefit-title" data-i18n="feat.noreg.title"></div>
-          <p class="benefit-text" data-i18n="feat.noreg.text"></p>
-        </div>
-        <div class="benefit-item reveal" data-reveal-delay="1">
-          <div class="benefit-index">02</div>
-          <div class="benefit-title" data-i18n="feat.privacy.title"></div>
-          <p class="benefit-text" data-i18n="feat.privacy.text"></p>
-        </div>
-        <div class="benefit-item reveal" data-reveal-delay="2">
-          <div class="benefit-index">03</div>
-          <div class="benefit-title" data-i18n="feat.anywhere.title"></div>
-          <p class="benefit-text" data-i18n="feat.anywhere.text"></p>
-        </div>
-        <div class="benefit-item reveal" data-reveal-delay="3">
-          <div class="benefit-index">04</div>
-          <div class="benefit-title" data-i18n="feat.share.title"></div>
-          <p class="benefit-text" data-i18n="feat.share.text"></p>
-        </div>
-        <div class="benefit-item reveal" data-reveal-delay="4">
-          <div class="benefit-index">05</div>
-          <div class="benefit-title" data-i18n="feat.temp.title"></div>
-          <p class="benefit-text" data-i18n="feat.temp.text"></p>
-        </div>
-        <div class="benefit-item reveal" data-reveal-delay="5">
-          <div class="benefit-index">06</div>
-          <div class="benefit-title" data-i18n="feat.growing.title"></div>
-          <p class="benefit-text" data-i18n="feat.growing.text"></p>
-        </div>
+        <div class="benefit-item reveal"><div class="benefit-index">01</div><div class="benefit-title" data-i18n="feat.noreg.title"></div><p class="benefit-text" data-i18n="feat.noreg.text"></p></div>
+        <div class="benefit-item reveal" data-reveal-delay="1"><div class="benefit-index">02</div><div class="benefit-title" data-i18n="feat.privacy.title"></div><p class="benefit-text" data-i18n="feat.privacy.text"></p></div>
+        <div class="benefit-item reveal" data-reveal-delay="2"><div class="benefit-index">03</div><div class="benefit-title" data-i18n="feat.anywhere.title"></div><p class="benefit-text" data-i18n="feat.anywhere.text"></p></div>
+        <div class="benefit-item reveal" data-reveal-delay="3"><div class="benefit-index">04</div><div class="benefit-title" data-i18n="feat.share.title"></div><p class="benefit-text" data-i18n="feat.share.text"></p></div>
+        <div class="benefit-item reveal" data-reveal-delay="4"><div class="benefit-index">05</div><div class="benefit-title" data-i18n="feat.temp.title"></div><p class="benefit-text" data-i18n="feat.temp.text"></p></div>
+        <div class="benefit-item reveal" data-reveal-delay="5"><div class="benefit-index">06</div><div class="benefit-title" data-i18n="feat.growing.title"></div><p class="benefit-text" data-i18n="feat.growing.text"></p></div>
       </div>
     </div>
   </section>
@@ -1385,99 +1217,25 @@
   </div>
 
   <script>
-    /* ───── i18n ───── */
+    /* ─────────────────────────────────────────
+       DATA
+    ───────────────────────────────────────── */
     const LANGS = [
-      { code: 'en', label: 'English', native: 'English', flag: '🇺🇸' },
-      { code: 'zh-CN', label: '中文', native: '简体中文', flag: '🇨🇳' },
-      { code: 'zh-TW', label: '漢語', native: '繁體中文', flag: '🇭🇰' },
-      { code: 'ja', label: '日本語', native: '日本語', flag: '🇯🇵' },
-      { code: 'pt', label: 'Português', native: 'Português', flag: '🇧🇷' },
-      { code: 'es', label: 'Español', native: 'Español', flag: '🇪🇸' },
-      { code: 'fr', label: 'Français', native: 'Français', flag: '🇫🇷' },
+      { code: 'en',    native: 'English',  flag: '🇺🇸' },
+      { code: 'zh-CN', native: '简体中文',  flag: '🇨🇳' },
+      { code: 'zh-TW', native: '繁體中文',  flag: '🇭🇰' },
+      { code: 'ja',    native: '日本語',    flag: '🇯🇵' },
+      { code: 'pt',    native: 'Português', flag: '🇧🇷' },
+      { code: 'es',    native: 'Español',   flag: '🇪🇸' },
+      { code: 'fr',    native: 'Français',  flag: '🇫🇷' },
     ];
 
     const T = {
-      'zh-CN': {
-        'meta.title': 'TempUtils — 所有临时工具，一站搞定',
-        'meta.description': '笔记、表格、文件、白板、聊天、邮箱等，无需注册，无需安装，用完即走。',
-        'meta.locale': 'zh_CN',
-        'nav.tools': '工具',
-        'nav.features': '特性',
-        'nav.cta': '免费使用 →',
-        'hero.badge': '临时工具集合 · temputils.com',
-        'hero.title1': '所有临时工具，', 'hero.title2': '一站搞定',
-        'hero.sub': '无需注册，无需安装。临时笔记、表格、文件、白板、聊天、邮箱……用完即走，简单纯粹。',
-        'hero.cta1': '免费使用',
-        'stats.tools': '已上线工具', 'stats.signup': '注册要求', 'stats.free': '免费使用', 'stats.growing': '持续更新',
-        'tools.label': '工具集', 'tools.title': '你需要的临时工具，都在这里', 'tools.sub': '每个工具专注一个场景，轻量、快速、无需账号。',
-        'tool.note.name': '临时笔记', 'tool.note.desc': '快速记录临时内容，生成唯一链接分享给任何人，关闭即止。',
-        'tool.table.name': '临时表格', 'tool.table.desc': '在线创建编辑表格，支持导出，适合临时整理数据或协作记录。',
-        'tool.file.name': '临时文件', 'tool.file.desc': '上传文件获取临时下载链接，快速传递给他人，到期自动清除。',
-        'tool.board.name': '临时白板', 'tool.board.desc': '无限画布自由绘制，分享链接实时查看，适合头脑风暴与草图。',
-        'tool.chat.name': '临时聊天', 'tool.chat.desc': '无需注册即可创建临时聊天室，实时收发消息，24 小时后自动清理。',
-        'tool.email.name': '临时邮箱', 'tool.email.desc': '打开即生成随机收件地址，接收一次性邮件并查看 HTML 邮件内容。',
-        'tool.code.name': '临时代码片段', 'tool.code.desc': '打开随机链接立即写代码，自动保存语言与内容，适合临时分享和演示。',
-        'tool.cron.name': '临时定时任务', 'tool.cron.desc': '用可视化方式创建和预览定时任务，支持文本任务与请求任务。',
-        'tool.video.name': '临时视频会议', 'tool.video.desc': '快速创建多人视频房间，支持实时音视频与分享链接，空闲后自动过期。',
-        'tool.voice.name': '临时语音房间', 'tool.voice.desc': '快速加入多人语音房间，低延迟实时通话，适合只需要声音的讨论场景。',
-        'tool.more.id': '即将推出', 'tool.more.name': '更多工具', 'tool.more.desc': '持续开发中，更多临时工具即将上线，欢迎提交你的需求。',
-        'tag.text': '文本', 'tag.share': '分享', 'tag.link': '链接', 'tag.table': '表格', 'tag.collab': '协作', 'tag.export': '导出',
-        'tag.upload': '上传', 'tag.transfer': '传输', 'tag.templink': '临时链接', 'tag.whiteboard': '白板', 'tag.draw': '绘图', 'tag.realtime': '实时',
-        'tag.chat': '聊天', 'tag.email': '邮箱', 'tag.inbox': '收件', 'tag.code': '代码', 'tag.snippet': '片段', 'tag.schedule': '定时', 'tag.cron': 'Cron', 'tag.video': '视频', 'tag.meeting': '会议', 'tag.voice': '语音', 'tag.audio': '音频',
-        'features.label': '为什么选择', 'features.title': '简单，才是最好的设计', 'features.sub': 'TempUtils 每个工具遵循同一原则：开箱即用，用完即走。',
-        'feat.noreg.title': '无需注册', 'feat.noreg.text': '打开即用，没有账号、没有邮件验证、没有任何门槛。节省你的每一秒。',
-        'feat.privacy.title': '隐私优先', 'feat.privacy.text': '临时数据临时存储，密码生成等敏感功能全程本地运算，零服务器接触。',
-        'feat.anywhere.title': '随时可用', 'feat.anywhere.text': '任何设备、任何浏览器，访问 temputils.com 即可，不依赖 App。',
-        'feat.share.title': '一键分享', 'feat.share.text': '笔记、表格、白板均可生成唯一链接，发给任何人，秒开即查。',
-        'feat.temp.title': '用完即走', 'feat.temp.text': '无需管理，无需清理。临时数据到期自动清除，保持干净。',
-        'feat.growing.title': '持续增长', 'feat.growing.text': '工具集持续扩充，有好点子？欢迎联系我们。',
-        'cta.label': '立即体验', 'cta.title': '现在就试试', 'cta.sub': '无需任何准备，打开浏览器，直接开始。', 'cta.btn': '免费使用 →',
-        'footer.contact': '联系我们',
-      },
-      'zh-TW': {
-        'meta.title': 'TempUtils — 所有臨時工具，一站搞定',
-        'meta.description': '筆記、表格、文件、白板、聊天、信箱等，無需註冊，無需安裝，用完即走。',
-        'meta.locale': 'zh_TW',
-        'nav.tools': '工具',
-        'nav.features': '特性',
-        'nav.cta': '免費使用 →',
-        'hero.badge': '臨時工具集合 · temputils.com',
-        'hero.title1': '所有臨時工具，', 'hero.title2': '一站搞定',
-        'hero.sub': '無需註冊，無需安裝。臨時筆記、表格、文件、白板、聊天、信箱……用完即走，簡單純粹。',
-        'hero.cta1': '免費使用',
-        'stats.tools': '已上線工具', 'stats.signup': '註冊要求', 'stats.free': '免費使用', 'stats.growing': '持續更新',
-        'tools.label': '工具集', 'tools.title': '你需要的臨時工具，都在這裡', 'tools.sub': '每個工具專注一個場景，輕量、快速、無需帳號。',
-        'tool.note.name': '臨時筆記', 'tool.note.desc': '快速記錄臨時內容，生成唯一連結分享給任何人，關閉即止。',
-        'tool.table.name': '臨時表格', 'tool.table.desc': '線上建立編輯表格，支援匯出，適合臨時整理資料或協作記錄。',
-        'tool.file.name': '臨時文件', 'tool.file.desc': '上傳文件取得臨時下載連結，快速傳遞給他人，到期自動清除。',
-        'tool.board.name': '臨時白板', 'tool.board.desc': '無限畫布自由繪製，分享連結即時查看，適合腦力激盪與草圖。',
-        'tool.chat.name': '臨時聊天', 'tool.chat.desc': '無需註冊即可建立臨時聊天室，即時收發訊息，24 小時後自動清理。',
-        'tool.email.name': '臨時信箱', 'tool.email.desc': '打開即生成隨機收件地址，接收一次性郵件並查看 HTML 郵件內容。',
-        'tool.code.name': '臨時程式碼片段', 'tool.code.desc': '打開隨機連結立即開始寫程式，會自動儲存語言與內容，適合臨時分享與展示。',
-        'tool.cron.name': '臨時定時任務', 'tool.cron.desc': '以視覺化方式建立與預覽定時任務，支援文字任務與請求任務。',
-        'tool.video.name': '臨時視訊會議', 'tool.video.desc': '快速建立多人視訊房間，支援即時音訊與視訊，空閒後自動過期。',
-        'tool.voice.name': '臨時語音房間', 'tool.voice.desc': '快速加入多人語音房間，低延遲即時通話，適合只需要聲音的討論場景。',
-        'tool.more.id': '即將推出', 'tool.more.name': '更多工具', 'tool.more.desc': '持續開發中，更多臨時工具即將上線，歡迎提交你的需求。',
-        'tag.text': '文字', 'tag.share': '分享', 'tag.link': '連結', 'tag.table': '表格', 'tag.collab': '協作', 'tag.export': '匯出',
-        'tag.upload': '上傳', 'tag.transfer': '傳輸', 'tag.templink': '臨時連結', 'tag.whiteboard': '白板', 'tag.draw': '繪圖', 'tag.realtime': '即時',
-        'tag.chat': '聊天', 'tag.email': '信箱', 'tag.inbox': '收件', 'tag.code': '程式碼', 'tag.snippet': '片段', 'tag.schedule': '排程', 'tag.cron': 'Cron', 'tag.video': '視訊', 'tag.meeting': '會議', 'tag.voice': '語音', 'tag.audio': '音訊',
-        'features.label': '為什麼選擇', 'features.title': '簡單，才是最好的設計', 'features.sub': 'TempUtils 每個工具遵循同一原則：開箱即用，用完即走。',
-        'feat.noreg.title': '無需註冊', 'feat.noreg.text': '開啟即用，沒有帳號、沒有郵件驗證、沒有任何門檻。',
-        'feat.privacy.title': '隱私優先', 'feat.privacy.text': '臨時資料臨時儲存，密碼生成等敏感功能全程本地運算。',
-        'feat.anywhere.title': '隨時可用', 'feat.anywhere.text': '任何裝置、任何瀏覽器，訪問 temputils.com 即可，不依賴 App。',
-        'feat.share.title': '一鍵分享', 'feat.share.text': '筆記、表格、白板均可生成唯一連結，發給任何人，秒開即查。',
-        'feat.temp.title': '用完即走', 'feat.temp.text': '無需管理，無需清理。臨時資料到期自動清除，保持乾淨。',
-        'feat.growing.title': '持續增長', 'feat.growing.text': '工具集持續擴充，有好點子？歡迎聯絡我們。',
-        'cta.label': '立即體驗', 'cta.title': '現在就試試', 'cta.sub': '無需任何準備，打開瀏覽器，直接開始。', 'cta.btn': '免費使用 →',
-        'footer.contact': '聯絡我們',
-      },
-      'en': {
+      en: {
         'meta.title': 'TempUtils — Temporary Tools for Everyone',
         'meta.description': 'Notes, tables, files, whiteboards, chat, email and more. No sign-up, no install. Use it and go.',
         'meta.locale': 'en_US',
-        'nav.tools': 'Tools',
-        'nav.features': 'Features',
-        'nav.cta': 'Use Free →',
+        'nav.tools': 'Tools', 'nav.features': 'Features', 'nav.cta': 'Use Free →',
         'hero.badge': 'Temporary Tools Collection · temputils.com',
         'hero.title1': 'All temporary tools,', 'hero.title2': 'one place.',
         'hero.sub': 'No sign-up, no install. Temp notes, tables, files, whiteboards, chat, email… Use it and go.',
@@ -1494,10 +1252,11 @@
         'tool.cron.name': 'Temp Cron', 'tool.cron.desc': 'Create and preview scheduled tasks with structured controls for text jobs and outbound request jobs.',
         'tool.video.name': 'Temp Video', 'tool.video.desc': 'Launch a temporary multi-user video room with live audio/video, shareable links, and auto-expiry.',
         'tool.voice.name': 'Temp Voice', 'tool.voice.desc': 'Join a temporary multi-user voice room with low-latency audio and simple shareable room links.',
-        'tool.more.id': 'Coming Soon', 'tool.more.name': 'More Tools', 'tool.more.desc': 'More temporary tools are on the way. Have a request? Let us know!',
+        'tool.more.badge': 'Coming Soon', 'tool.more.name': 'More Tools', 'tool.more.desc': 'More temporary tools are on the way. Have a request? Let us know!',
         'tag.text': 'Text', 'tag.share': 'Share', 'tag.link': 'Link', 'tag.table': 'Table', 'tag.collab': 'Collab', 'tag.export': 'Export',
         'tag.upload': 'Upload', 'tag.transfer': 'Transfer', 'tag.templink': 'Temp Link', 'tag.whiteboard': 'Whiteboard', 'tag.draw': 'Draw', 'tag.realtime': 'Realtime',
-        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Inbox', 'tag.code': 'Code', 'tag.snippet': 'Snippet', 'tag.schedule': 'Schedule', 'tag.cron': 'Cron', 'tag.video': 'Video', 'tag.meeting': 'Meeting', 'tag.voice': 'Voice', 'tag.audio': 'Audio',
+        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Inbox', 'tag.code': 'Code', 'tag.snippet': 'Snippet',
+        'tag.schedule': 'Schedule', 'tag.cron': 'Cron', 'tag.video': 'Video', 'tag.meeting': 'Meeting', 'tag.voice': 'Voice', 'tag.audio': 'Audio',
         'features.label': 'Why TempUtils', 'features.title': 'Simple is the best design.', 'features.sub': 'Every TempUtils tool follows the same principle: ready instantly, gone when done.',
         'feat.noreg.title': 'No Sign-up', 'feat.noreg.text': 'Open and use immediately. No account, no email verification, no friction.',
         'feat.privacy.title': 'Privacy First', 'feat.privacy.text': 'Temp data, temp storage. Sensitive tools like password generation run entirely in your browser.',
@@ -1508,13 +1267,83 @@
         'cta.label': 'Try It Now', 'cta.title': 'Give it a try.', 'cta.sub': 'No preparation needed. Open your browser and start.', 'cta.btn': 'Use Free →',
         'footer.contact': 'Contact',
       },
-      'ja': {
+      'zh-CN': {
+        'meta.title': 'TempUtils — 所有临时工具，一站搞定',
+        'meta.description': '笔记、表格、文件、白板、聊天、邮箱等，无需注册，无需安装，用完即走。',
+        'meta.locale': 'zh_CN',
+        'nav.tools': '工具', 'nav.features': '特性', 'nav.cta': '免费使用 →',
+        'hero.badge': '临时工具集合 · temputils.com',
+        'hero.title1': '所有临时工具，', 'hero.title2': '一站搞定',
+        'hero.sub': '无需注册，无需安装。临时笔记、表格、文件、白板、聊天、邮箱……用完即走，简单纯粹。',
+        'hero.cta1': '免费使用',
+        'stats.tools': '已上线工具', 'stats.signup': '注册要求', 'stats.free': '免费使用', 'stats.growing': '持续更新',
+        'tools.label': '工具集', 'tools.title': '你需要的临时工具，都在这里', 'tools.sub': '每个工具专注一个场景，轻量、快速、无需账号。',
+        'tool.note.name': '临时笔记', 'tool.note.desc': '快速记录临时内容，生成唯一链接分享给任何人，关闭即止。',
+        'tool.table.name': '临时表格', 'tool.table.desc': '在线创建编辑表格，支持导出，适合临时整理数据或协作记录。',
+        'tool.file.name': '临时文件', 'tool.file.desc': '上传文件获取临时下载链接，快速传递给他人，到期自动清除。',
+        'tool.board.name': '临时白板', 'tool.board.desc': '无限画布自由绘制，分享链接实时查看，适合头脑风暴与草图。',
+        'tool.chat.name': '临时聊天', 'tool.chat.desc': '无需注册即可创建临时聊天室，实时收发消息，24 小时后自动清理。',
+        'tool.email.name': '临时邮箱', 'tool.email.desc': '打开即生成随机收件地址，接收一次性邮件并查看 HTML 邮件内容。',
+        'tool.code.name': '临时代码片段', 'tool.code.desc': '打开随机链接立即写代码，自动保存语言与内容，适合临时分享和演示。',
+        'tool.cron.name': '临时定时任务', 'tool.cron.desc': '用可视化方式创建和预览定时任务，支持文本任务与请求任务。',
+        'tool.video.name': '临时视频会议', 'tool.video.desc': '快速创建多人视频房间，支持实时音视频与分享链接，空闲后自动过期。',
+        'tool.voice.name': '临时语音房间', 'tool.voice.desc': '快速加入多人语音房间，低延迟实时通话，适合只需要声音的讨论场景。',
+        'tool.more.badge': '即将推出', 'tool.more.name': '更多工具', 'tool.more.desc': '持续开发中，更多临时工具即将上线，欢迎提交你的需求。',
+        'tag.text': '文本', 'tag.share': '分享', 'tag.link': '链接', 'tag.table': '表格', 'tag.collab': '协作', 'tag.export': '导出',
+        'tag.upload': '上传', 'tag.transfer': '传输', 'tag.templink': '临时链接', 'tag.whiteboard': '白板', 'tag.draw': '绘图', 'tag.realtime': '实时',
+        'tag.chat': '聊天', 'tag.email': '邮箱', 'tag.inbox': '收件', 'tag.code': '代码', 'tag.snippet': '片段',
+        'tag.schedule': '定时', 'tag.cron': 'Cron', 'tag.video': '视频', 'tag.meeting': '会议', 'tag.voice': '语音', 'tag.audio': '音频',
+        'features.label': '为什么选择', 'features.title': '简单，才是最好的设计', 'features.sub': 'TempUtils 每个工具遵循同一原则：开箱即用，用完即走。',
+        'feat.noreg.title': '无需注册', 'feat.noreg.text': '打开即用，没有账号、没有邮件验证、没有任何门槛。节省你的每一秒。',
+        'feat.privacy.title': '隐私优先', 'feat.privacy.text': '临时数据临时存储，密码生成等敏感功能全程本地运算，零服务器接触。',
+        'feat.anywhere.title': '随时可用', 'feat.anywhere.text': '任何设备、任何浏览器，访问 temputils.com 即可，不依赖 App。',
+        'feat.share.title': '一键分享', 'feat.share.text': '笔记、表格、白板均可生成唯一链接，发给任何人，秒开即查。',
+        'feat.temp.title': '用完即走', 'feat.temp.text': '无需管理，无需清理。临时数据到期自动清除，保持干净。',
+        'feat.growing.title': '持续增长', 'feat.growing.text': '工具集持续扩充，有好点子？欢迎联系我们。',
+        'cta.label': '立即体验', 'cta.title': '现在就试试', 'cta.sub': '无需任何准备，打开浏览器，直接开始。', 'cta.btn': '免费使用 →',
+        'footer.contact': '联系我们',
+      },
+      'zh-TW': {
+        'meta.title': 'TempUtils — 所有臨時工具，一站搞定',
+        'meta.description': '筆記、表格、文件、白板、聊天、信箱等，無需註冊，無需安裝，用完即走。',
+        'meta.locale': 'zh_TW',
+        'nav.tools': '工具', 'nav.features': '特性', 'nav.cta': '免費使用 →',
+        'hero.badge': '臨時工具集合 · temputils.com',
+        'hero.title1': '所有臨時工具，', 'hero.title2': '一站搞定',
+        'hero.sub': '無需註冊，無需安裝。臨時筆記、表格、文件、白板、聊天、信箱……用完即走，簡單純粹。',
+        'hero.cta1': '免費使用',
+        'stats.tools': '已上線工具', 'stats.signup': '註冊要求', 'stats.free': '免費使用', 'stats.growing': '持續更新',
+        'tools.label': '工具集', 'tools.title': '你需要的臨時工具，都在這裡', 'tools.sub': '每個工具專注一個場景，輕量、快速、無需帳號。',
+        'tool.note.name': '臨時筆記', 'tool.note.desc': '快速記錄臨時內容，生成唯一連結分享給任何人，關閉即止。',
+        'tool.table.name': '臨時表格', 'tool.table.desc': '線上建立編輯表格，支援匯出，適合臨時整理資料或協作記錄。',
+        'tool.file.name': '臨時文件', 'tool.file.desc': '上傳文件取得臨時下載連結，快速傳遞給他人，到期自動清除。',
+        'tool.board.name': '臨時白板', 'tool.board.desc': '無限畫布自由繪製，分享連結即時查看，適合腦力激盪與草圖。',
+        'tool.chat.name': '臨時聊天', 'tool.chat.desc': '無需註冊即可建立臨時聊天室，即時收發訊息，24 小時後自動清理。',
+        'tool.email.name': '臨時信箱', 'tool.email.desc': '打開即生成隨機收件地址，接收一次性郵件並查看 HTML 郵件內容。',
+        'tool.code.name': '臨時程式碼片段', 'tool.code.desc': '打開隨機連結立即開始寫程式，會自動儲存語言與內容，適合臨時分享與展示。',
+        'tool.cron.name': '臨時定時任務', 'tool.cron.desc': '以視覺化方式建立與預覽定時任務，支援文字任務與請求任務。',
+        'tool.video.name': '臨時視訊會議', 'tool.video.desc': '快速建立多人視訊房間，支援即時音訊與視訊，空閒後自動過期。',
+        'tool.voice.name': '臨時語音房間', 'tool.voice.desc': '快速加入多人語音房間，低延遲即時通話，適合只需要聲音的討論場景。',
+        'tool.more.badge': '即將推出', 'tool.more.name': '更多工具', 'tool.more.desc': '持續開發中，更多臨時工具即將上線，歡迎提交你的需求。',
+        'tag.text': '文字', 'tag.share': '分享', 'tag.link': '連結', 'tag.table': '表格', 'tag.collab': '協作', 'tag.export': '匯出',
+        'tag.upload': '上傳', 'tag.transfer': '傳輸', 'tag.templink': '臨時連結', 'tag.whiteboard': '白板', 'tag.draw': '繪圖', 'tag.realtime': '即時',
+        'tag.chat': '聊天', 'tag.email': '信箱', 'tag.inbox': '收件', 'tag.code': '程式碼', 'tag.snippet': '片段',
+        'tag.schedule': '排程', 'tag.cron': 'Cron', 'tag.video': '視訊', 'tag.meeting': '會議', 'tag.voice': '語音', 'tag.audio': '音訊',
+        'features.label': '為什麼選擇', 'features.title': '簡單，才是最好的設計', 'features.sub': 'TempUtils 每個工具遵循同一原則：開箱即用，用完即走。',
+        'feat.noreg.title': '無需註冊', 'feat.noreg.text': '開啟即用，沒有帳號、沒有郵件驗證、沒有任何門檻。',
+        'feat.privacy.title': '隱私優先', 'feat.privacy.text': '臨時資料臨時儲存，密碼生成等敏感功能全程本地運算。',
+        'feat.anywhere.title': '隨時可用', 'feat.anywhere.text': '任何裝置、任何瀏覽器，訪問 temputils.com 即可，不依賴 App。',
+        'feat.share.title': '一鍵分享', 'feat.share.text': '筆記、表格、白板均可生成唯一連結，發給任何人，秒開即查。',
+        'feat.temp.title': '用完即走', 'feat.temp.text': '無需管理，無需清理。臨時資料到期自動清除，保持乾淨。',
+        'feat.growing.title': '持續增長', 'feat.growing.text': '工具集持續擴充，有好點子？歡迎聯絡我們。',
+        'cta.label': '立即體驗', 'cta.title': '現在就試試', 'cta.sub': '無需任何準備，打開瀏覽器，直接開始。', 'cta.btn': '免費使用 →',
+        'footer.contact': '聯絡我們',
+      },
+      ja: {
         'meta.title': 'TempUtils — すべての一時ツールが、ここに集結',
         'meta.description': 'メモ、表、ファイル、ボード、チャット、メールなど。登録不要、インストール不要で、使ったら終わり。',
         'meta.locale': 'ja_JP',
-        'nav.tools': 'ツール',
-        'nav.features': '特長',
-        'nav.cta': '無料で使う →',
+        'nav.tools': 'ツール', 'nav.features': '特長', 'nav.cta': '無料で使う →',
         'hero.badge': '一時ツール集 · temputils.com',
         'hero.title1': 'すべての一時ツールが、', 'hero.title2': 'ここに集結。',
         'hero.sub': '登録不要・インストール不要。メモ、表、ファイル、ボード、チャット、メール…使ったら終わり。',
@@ -1531,10 +1360,11 @@
         'tool.cron.name': '一時定期タスク', 'tool.cron.desc': '構造化された操作で定期タスクを作成・確認でき、テキスト実行とリクエスト実行に対応します。',
         'tool.video.name': '一時ビデオルーム', 'tool.video.desc': '複数人向けの一時ビデオルームをすぐ作成でき、音声・映像通話と共有リンクに対応します。',
         'tool.voice.name': '一時音声ルーム', 'tool.voice.desc': '複数人向けの一時音声ルームにすぐ参加でき、低遅延の会話を共有リンクだけで始められます。',
-        'tool.more.id': '近日公開', 'tool.more.name': 'さらに多くのツール', 'tool.more.desc': '開発中…続々と追加予定。リクエストがあればお知らせください。',
+        'tool.more.badge': '近日公開', 'tool.more.name': 'さらに多くのツール', 'tool.more.desc': '開発中…続々と追加予定。リクエストがあればお知らせください。',
         'tag.text': 'テキスト', 'tag.share': '共有', 'tag.link': 'リンク', 'tag.table': '表', 'tag.collab': '共同編集', 'tag.export': 'エクスポート',
         'tag.upload': 'アップロード', 'tag.transfer': '転送', 'tag.templink': '一時リンク', 'tag.whiteboard': 'ボード', 'tag.draw': '描画', 'tag.realtime': 'リアルタイム',
-        'tag.chat': 'チャット', 'tag.email': 'メール', 'tag.inbox': '受信箱', 'tag.code': 'コード', 'tag.snippet': 'スニペット', 'tag.schedule': 'スケジュール', 'tag.cron': 'Cron', 'tag.video': 'ビデオ', 'tag.meeting': '会議', 'tag.voice': '音声', 'tag.audio': '音声',
+        'tag.chat': 'チャット', 'tag.email': 'メール', 'tag.inbox': '受信箱', 'tag.code': 'コード', 'tag.snippet': 'スニペット',
+        'tag.schedule': 'スケジュール', 'tag.cron': 'Cron', 'tag.video': 'ビデオ', 'tag.meeting': '会議', 'tag.voice': '音声', 'tag.audio': '音声',
         'features.label': '選ばれる理由', 'features.title': 'シンプルが、最高のデザイン。', 'features.sub': 'TempUtilsのすべてのツールは同じ原則に従います：すぐに使えて、使ったら終わり。',
         'feat.noreg.title': '登録不要', 'feat.noreg.text': '開いてすぐ使える。アカウント不要、メール認証不要。',
         'feat.privacy.title': 'プライバシー優先', 'feat.privacy.text': '一時データ、一時保存。パスワード生成などはブラウザ内で処理。',
@@ -1545,13 +1375,11 @@
         'cta.label': '今すぐ試す', 'cta.title': '試してみよう', 'cta.sub': '準備は何も要りません。ブラウザを開いてそのまま始めましょう。', 'cta.btn': '無料で使う →',
         'footer.contact': 'お問い合わせ',
       },
-      'pt': {
+      pt: {
         'meta.title': 'TempUtils — Todas as ferramentas temporárias, em um só lugar',
         'meta.description': 'Notas, tabelas, arquivos, quadros, chat, email e muito mais. Sem cadastro, sem instalação. Use e pronto.',
         'meta.locale': 'pt_BR',
-        'nav.tools': 'Ferramentas',
-        'nav.features': 'Recursos',
-        'nav.cta': 'Usar Grátis →',
+        'nav.tools': 'Ferramentas', 'nav.features': 'Recursos', 'nav.cta': 'Usar Grátis →',
         'hero.badge': 'Ferramentas Temporárias · temputils.com',
         'hero.title1': 'Todas as ferramentas temporárias,', 'hero.title2': 'em um só lugar.',
         'hero.sub': 'Sem cadastro, sem instalação. Notas, tabelas, arquivos, quadros, chat, email… Use e pronto.',
@@ -1568,10 +1396,11 @@
         'tool.cron.name': 'Cron Temporário', 'tool.cron.desc': 'Crie e visualize tarefas agendadas com controles estruturados para tarefas de texto e requisições externas.',
         'tool.video.name': 'Vídeo Temporário', 'tool.video.desc': 'Inicie uma sala temporária de vídeo para várias pessoas com áudio/vídeo ao vivo, link compartilhável e expiração automática.',
         'tool.voice.name': 'Voz Temporária', 'tool.voice.desc': 'Entre em uma sala temporária de voz para várias pessoas com áudio de baixa latência e link simples para compartilhar.',
-        'tool.more.id': 'Em Breve', 'tool.more.name': 'Mais Ferramentas', 'tool.more.desc': 'Mais ferramentas em desenvolvimento. Tem uma sugestão? Fale conosco!',
+        'tool.more.badge': 'Em Breve', 'tool.more.name': 'Mais Ferramentas', 'tool.more.desc': 'Mais ferramentas em desenvolvimento. Tem uma sugestão? Fale conosco!',
         'tag.text': 'Texto', 'tag.share': 'Compartilhar', 'tag.link': 'Link', 'tag.table': 'Tabela', 'tag.collab': 'Colaboração', 'tag.export': 'Exportar',
         'tag.upload': 'Upload', 'tag.transfer': 'Transferir', 'tag.templink': 'Link Temp.', 'tag.whiteboard': 'Quadro', 'tag.draw': 'Desenho', 'tag.realtime': 'Tempo Real',
-        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Caixa de entrada', 'tag.code': 'Código', 'tag.snippet': 'Trecho', 'tag.schedule': 'Agendamento', 'tag.cron': 'Cron', 'tag.video': 'Vídeo', 'tag.meeting': 'Reunião', 'tag.voice': 'Voz', 'tag.audio': 'Áudio',
+        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Caixa de entrada', 'tag.code': 'Código', 'tag.snippet': 'Trecho',
+        'tag.schedule': 'Agendamento', 'tag.cron': 'Cron', 'tag.video': 'Vídeo', 'tag.meeting': 'Reunião', 'tag.voice': 'Voz', 'tag.audio': 'Áudio',
         'features.label': 'Por que TempUtils', 'features.title': 'Simples é o melhor design.', 'features.sub': 'Cada ferramenta do TempUtils segue o mesmo princípio: pronta na hora, some quando terminar.',
         'feat.noreg.title': 'Sem Cadastro', 'feat.noreg.text': 'Abra e use imediatamente. Sem conta, sem e-mail, sem barreiras.',
         'feat.privacy.title': 'Privacidade Primeiro', 'feat.privacy.text': 'Dados temporários. Funções sensíveis rodam totalmente no seu navegador.',
@@ -1582,13 +1411,11 @@
         'cta.label': 'Experimente Agora', 'cta.title': 'Experimente já.', 'cta.sub': 'Nenhuma preparação necessária. Abra o navegador e comece.', 'cta.btn': 'Usar Grátis →',
         'footer.contact': 'Contato',
       },
-      'es': {
+      es: {
         'meta.title': 'TempUtils — Todas las herramientas temporales, en un solo lugar',
         'meta.description': 'Notas, tablas, archivos, pizarras, chat, email y más. Sin registro, sin instalación. Úsalo y listo.',
         'meta.locale': 'es_ES',
-        'nav.tools': 'Herramientas',
-        'nav.features': 'Funciones',
-        'nav.cta': 'Usar Gratis →',
+        'nav.tools': 'Herramientas', 'nav.features': 'Funciones', 'nav.cta': 'Usar Gratis →',
         'hero.badge': 'Herramientas Temporales · temputils.com',
         'hero.title1': 'Todas las herramientas temporales,', 'hero.title2': 'en un solo lugar.',
         'hero.sub': 'Sin registro, sin instalación. Notas, tablas, archivos, pizarras, chat, email… Úsalo y listo.',
@@ -1605,10 +1432,11 @@
         'tool.cron.name': 'Cron Temporal', 'tool.cron.desc': 'Crea y previsualiza tareas programadas con controles estructurados para tareas de texto y solicitudes salientes.',
         'tool.video.name': 'Video Temporal', 'tool.video.desc': 'Inicia una sala temporal de video para varias personas con audio/vídeo en vivo, enlace compartible y expiración automática.',
         'tool.voice.name': 'Voz Temporal', 'tool.voice.desc': 'Únete a una sala temporal de voz para varias personas con audio de baja latencia y un enlace simple para compartir.',
-        'tool.more.id': 'Próximamente', 'tool.more.name': 'Más Herramientas', 'tool.more.desc': 'Más herramientas en desarrollo. ¿Tienes una sugerencia? ¡Cuéntanos!',
+        'tool.more.badge': 'Próximamente', 'tool.more.name': 'Más Herramientas', 'tool.more.desc': 'Más herramientas en desarrollo. ¿Tienes una sugerencia? ¡Cuéntanos!',
         'tag.text': 'Texto', 'tag.share': 'Compartir', 'tag.link': 'Enlace', 'tag.table': 'Tabla', 'tag.collab': 'Colaboración', 'tag.export': 'Exportar',
         'tag.upload': 'Subir', 'tag.transfer': 'Transferir', 'tag.templink': 'Enlace Temp.', 'tag.whiteboard': 'Pizarra', 'tag.draw': 'Dibujo', 'tag.realtime': 'Tiempo Real',
-        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Bandeja', 'tag.code': 'Código', 'tag.snippet': 'Fragmento', 'tag.schedule': 'Programación', 'tag.cron': 'Cron', 'tag.video': 'Video', 'tag.meeting': 'Reunión', 'tag.voice': 'Voz', 'tag.audio': 'Audio',
+        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Bandeja', 'tag.code': 'Código', 'tag.snippet': 'Fragmento',
+        'tag.schedule': 'Programación', 'tag.cron': 'Cron', 'tag.video': 'Video', 'tag.meeting': 'Reunión', 'tag.voice': 'Voz', 'tag.audio': 'Audio',
         'features.label': 'Por qué TempUtils', 'features.title': 'Simple es el mejor diseño.', 'features.sub': 'Cada herramienta de TempUtils sigue el mismo principio: lista al instante, se va cuando terminas.',
         'feat.noreg.title': 'Sin Registro', 'feat.noreg.text': 'Abre y usa de inmediato. Sin cuenta, sin correo, sin barreras.',
         'feat.privacy.title': 'Privacidad Primero', 'feat.privacy.text': 'Datos temporales. Las funciones sensibles se ejecutan en tu navegador.',
@@ -1619,22 +1447,20 @@
         'cta.label': 'Pruébalo Ahora', 'cta.title': 'Pruébalo ya.', 'cta.sub': 'No necesitas preparación. Abre el navegador y empieza.', 'cta.btn': 'Usar Gratis →',
         'footer.contact': 'Contacto',
       },
-      'fr': {
+      fr: {
         'meta.title': 'TempUtils — Tous les outils temporaires, au même endroit',
         'meta.description': 'Notes, tableaux, fichiers, tableaux blancs, chat, email et plus encore. Sans inscription, sans installation. Utilisez et partez.',
         'meta.locale': 'fr_FR',
-        'nav.tools': 'Outils',
-        'nav.features': 'Fonctionnalités',
-        'nav.cta': 'Utiliser Gratuitement →',
+        'nav.tools': 'Outils', 'nav.features': 'Fonctionnalités', 'nav.cta': 'Utiliser Gratuitement →',
         'hero.badge': 'Outils Temporaires · temputils.com',
         'hero.title1': 'Tous les outils temporaires,', 'hero.title2': 'au même endroit.',
         'hero.sub': 'Sans inscription, sans installation. Notes, tableaux, fichiers, tableaux blancs, chat, email… Utilisez et partez.',
         'hero.cta1': 'Utiliser Gratuitement',
         'stats.tools': 'Outils Disponibles', 'stats.signup': 'Inscription Requise', 'stats.free': 'Gratuit', 'stats.growing': 'Croissance',
-        'tools.label': 'Boîte à Outils', 'tools.title': 'Chaque outil temporaire dont vous avez besoin.', 'tools.sub': 'Chaque outil se concentre sur un cas d\'usage — léger, rapide, sans compte.',
+        'tools.label': 'Boîte à Outils', 'tools.title': "Chaque outil temporaire dont vous avez besoin.", 'tools.sub': "Chaque outil se concentre sur un cas d'usage — léger, rapide, sans compte.",
         'tool.note.name': 'Note Temporaire', 'tool.note.desc': 'Notez du contenu et partagez via un lien unique. Sans compte, disparaît à la fermeture.',
-        'tool.table.name': 'Tableau Temporaire', 'tool.table.desc': 'Créez et éditez des tableaux simples en ligne, exportez quand c\'est fait.',
-        'tool.file.name': 'Fichier Temporaire', 'tool.file.desc': 'Téléchargez un fichier, obtenez un lien temporaire. Suppression automatique à l\'expiration.',
+        'tool.table.name': 'Tableau Temporaire', 'tool.table.desc': "Créez et éditez des tableaux simples en ligne, exportez quand c'est fait.",
+        'tool.file.name': 'Fichier Temporaire', 'tool.file.desc': "Téléchargez un fichier, obtenez un lien temporaire. Suppression automatique à l'expiration.",
         'tool.board.name': 'Tableau Blanc Temporaire', 'tool.board.desc': 'Canevas infini pour le dessin libre. Lien en direct pour visualisation en temps réel.',
         'tool.chat.name': 'Chat Temporaire', 'tool.chat.desc': 'Créez instantanément un salon temporaire avec messagerie en temps réel, lien partageable et expiration automatique après 24 heures.',
         'tool.email.name': 'Email Temporaire', 'tool.email.desc': 'Ouvrez instantanément une boîte jetable aléatoire et lisez les emails HTML ou texte dans une interface légère.',
@@ -1642,14 +1468,15 @@
         'tool.cron.name': 'Cron Temporaire', 'tool.cron.desc': 'Créez et prévisualisez des tâches planifiées avec des contrôles structurés pour les tâches texte et les requêtes sortantes.',
         'tool.video.name': 'Vidéo Temporaire', 'tool.video.desc': 'Lancez une salle vidéo temporaire multi-utilisateur avec audio/vidéo en direct, lien partageable et expiration automatique.',
         'tool.voice.name': 'Voix Temporaire', 'tool.voice.desc': 'Rejoignez une salle vocale temporaire multi-utilisateur avec audio à faible latence et lien simple à partager.',
-        'tool.more.id': 'Bientôt Disponible', 'tool.more.name': 'Plus d\'Outils', 'tool.more.desc': 'D\'autres outils sont en cours de développement. Une suggestion ? Contactez-nous !',
+        'tool.more.badge': 'Bientôt Disponible', 'tool.more.name': "Plus d'Outils", 'tool.more.desc': "D'autres outils sont en cours de développement. Une suggestion ? Contactez-nous !",
         'tag.text': 'Texte', 'tag.share': 'Partager', 'tag.link': 'Lien', 'tag.table': 'Tableau', 'tag.collab': 'Collaboration', 'tag.export': 'Exporter',
         'tag.upload': 'Téléverser', 'tag.transfer': 'Transférer', 'tag.templink': 'Lien Temp.', 'tag.whiteboard': 'Tableau', 'tag.draw': 'Dessin', 'tag.realtime': 'Temps Réel',
-        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Boîte de réception', 'tag.code': 'Code', 'tag.snippet': 'Extrait', 'tag.schedule': 'Planification', 'tag.cron': 'Cron', 'tag.video': 'Vidéo', 'tag.meeting': 'Réunion', 'tag.voice': 'Voix', 'tag.audio': 'Audio',
-        'features.label': 'Pourquoi TempUtils', 'features.title': 'La simplicité, c\'est le meilleur design.', 'features.sub': 'Chaque outil de TempUtils suit le même principe : prêt instantanément, disparu quand c\'est terminé.',
+        'tag.chat': 'Chat', 'tag.email': 'Email', 'tag.inbox': 'Boîte de réception', 'tag.code': 'Code', 'tag.snippet': 'Extrait',
+        'tag.schedule': 'Planification', 'tag.cron': 'Cron', 'tag.video': 'Vidéo', 'tag.meeting': 'Réunion', 'tag.voice': 'Voix', 'tag.audio': 'Audio',
+        'features.label': 'Pourquoi TempUtils', 'features.title': "La simplicité, c'est le meilleur design.", 'features.sub': 'Chaque outil de TempUtils suit le même principe : prêt instantanément, disparu quand c\'est terminé.',
         'feat.noreg.title': 'Sans Inscription', 'feat.noreg.text': 'Ouvrez et utilisez immédiatement. Sans compte, sans e-mail, sans friction.',
-        'feat.privacy.title': 'Confidentialité d\'Abord', 'feat.privacy.text': 'Données temporaires. Les fonctions sensibles s\'exécutent entièrement dans votre navigateur.',
-        'feat.anywhere.title': 'Fonctionne Partout', 'feat.anywhere.text': 'N\'importe quel appareil, n\'importe quel navigateur. Visitez simplement temputils.com.',
+        'feat.privacy.title': "Confidentialité d'Abord", 'feat.privacy.text': 'Données temporaires. Les fonctions sensibles s\'exécutent entièrement dans votre navigateur.',
+        'feat.anywhere.title': 'Fonctionne Partout', 'feat.anywhere.text': "N'importe quel appareil, n'importe quel navigateur. Visitez simplement temputils.com.",
         'feat.share.title': 'Partage en Un Clic', 'feat.share.text': 'Notes, tableaux et tableaux blancs génèrent des liens uniques. Envoyez à n\'importe qui.',
         'feat.temp.title': 'Utilisez et Partez', 'feat.temp.text': 'Pas de gestion, pas de nettoyage. Les données temporaires expirent et sont supprimées.',
         'feat.growing.title': 'Toujours en Croissance', 'feat.growing.text': 'La boîte à outils ne cesse de s\'agrandir. Vous avez une idée ? Contactez-nous !',
@@ -1658,246 +1485,58 @@
       },
     };
 
+    // Pre-sorted tool list (sorted once at load, not on every render)
     const TOOLS = [
-      {
-        id: 'temp-note',
-        label: 'Temp Note',
-        url: 'https://tempnote.temputils.com',
-        status: 'live',
-        order: 10,
-        themeKey: 'tool-theme-note',
-        iconKey: 'temp-note',
-        nameKey: 'tool.note.name',
-        descKey: 'tool.note.desc',
-        tagKeys: ['tag.text', 'tag.share', 'tag.link'],
-      },
-      {
-        id: 'temp-table',
-        label: 'Temp Table',
-        url: 'https://temptable.temputils.com',
-        status: 'live',
-        order: 20,
-        themeKey: 'tool-theme-table',
-        iconKey: 'temp-table',
-        nameKey: 'tool.table.name',
-        descKey: 'tool.table.desc',
-        tagKeys: ['tag.table', 'tag.collab', 'tag.export'],
-      },
-      {
-        id: 'temp-file',
-        label: 'Temp File',
-        url: 'https://tempfile.temputils.com',
-        status: 'live',
-        order: 30,
-        themeKey: 'tool-theme-file',
-        iconKey: 'temp-file',
-        nameKey: 'tool.file.name',
-        descKey: 'tool.file.desc',
-        tagKeys: ['tag.upload', 'tag.transfer', 'tag.templink'],
-      },
-      {
-        id: 'temp-chat',
-        label: 'Temp Chat',
-        url: 'https://tempchat.temputils.com',
-        status: 'live',
-        order: 50,
-        themeKey: 'tool-theme-chat',
-        iconKey: 'temp-chat',
-        nameKey: 'tool.chat.name',
-        descKey: 'tool.chat.desc',
-        tagKeys: ['tag.chat', 'tag.realtime', 'tag.share'],
-      },
-      {
-        id: 'temp-email',
-        label: 'Temp Email',
-        url: 'https://tempemail.asia/',
-        status: 'live',
-        order: 60,
-        themeKey: 'tool-theme-email',
-        iconKey: 'temp-email',
-        nameKey: 'tool.email.name',
-        descKey: 'tool.email.desc',
-        tagKeys: ['tag.email', 'tag.inbox', 'tag.templink'],
-      },
-      {
-        id: 'temp-code',
-        label: 'Temp Code',
-        url: 'https://tempcode.temputils.com',
-        status: 'live',
-        order: 70,
-        themeKey: 'tool-theme-code',
-        iconKey: 'temp-code',
-        nameKey: 'tool.code.name',
-        descKey: 'tool.code.desc',
-        tagKeys: ['tag.code', 'tag.snippet', 'tag.share'],
-      },
-      {
-        id: 'temp-board',
-        label: 'Temp Board',
-        url: 'https://tempboard.temputils.com',
-        status: 'live',
-        order: 40,
-        themeKey: 'tool-theme-board',
-        iconKey: 'temp-board',
-        nameKey: 'tool.board.name',
-        descKey: 'tool.board.desc',
-        tagKeys: ['tag.whiteboard', 'tag.draw', 'tag.realtime'],
-      },
-      {
-        id: 'temp-video',
-        label: 'Temp Video',
-        url: 'https://github.com/hoa-js/examples/tree/master/tempvideo',
-        status: 'live',
-        order: 90,
-        themeKey: 'tool-theme-video',
-        iconKey: 'temp-video',
-        nameKey: 'tool.video.name',
-        descKey: 'tool.video.desc',
-        tagKeys: ['tag.video', 'tag.meeting', 'tag.share'],
-      },
-      {
-        id: 'temp-voice',
-        label: 'Temp Voice',
-        url: 'https://github.com/hoa-js/examples/tree/master/tempvoice',
-        status: 'live',
-        order: 100,
-        themeKey: 'tool-theme-voice',
-        iconKey: 'temp-voice',
-        nameKey: 'tool.voice.name',
-        descKey: 'tool.voice.desc',
-        tagKeys: ['tag.voice', 'tag.audio', 'tag.share'],
-      },
-      {
-        id: 'temp-cron',
-        label: 'Temp Cron',
-        url: 'https://tempcron.temputils.com',
-        status: 'live',
-        order: 80,
-        themeKey: 'tool-theme-cron',
-        iconKey: 'temp-cron',
-        nameKey: 'tool.cron.name',
-        descKey: 'tool.cron.desc',
-        tagKeys: ['tag.schedule', 'tag.cron', 'tag.code'],
-      },
-      {
-        id: 'coming-soon',
-        label: 'Coming Soon',
-        url: '',
-        status: 'coming',
-        order: 130,
-        themeKey: 'tool-theme-coming',
-        iconKey: 'coming-soon',
-        nameKey: 'tool.more.name',
-        descKey: 'tool.more.desc',
-        tagKeys: [],
-        idKey: 'tool.more.id',
-      },
-    ];
+      { id: 'temp-note',    url: 'https://tempnote.temputils.com',                              order: 10,  theme: 'tool-theme-note',   nameKey: 'tool.note.name',  descKey: 'tool.note.desc',  tags: ['tag.text','tag.share','tag.link'] },
+      { id: 'temp-table',   url: 'https://temptable.temputils.com',                             order: 20,  theme: 'tool-theme-table',  nameKey: 'tool.table.name', descKey: 'tool.table.desc', tags: ['tag.table','tag.collab','tag.export'] },
+      { id: 'temp-file',    url: 'https://tempfile.temputils.com',                              order: 30,  theme: 'tool-theme-file',   nameKey: 'tool.file.name',  descKey: 'tool.file.desc',  tags: ['tag.upload','tag.transfer','tag.templink'] },
+      { id: 'temp-board',   url: 'https://tempboard.temputils.com',                             order: 40,  theme: 'tool-theme-board',  nameKey: 'tool.board.name', descKey: 'tool.board.desc', tags: ['tag.whiteboard','tag.draw','tag.realtime'] },
+      { id: 'temp-chat',    url: 'https://tempchat.temputils.com',                              order: 50,  theme: 'tool-theme-chat',   nameKey: 'tool.chat.name',  descKey: 'tool.chat.desc',  tags: ['tag.chat','tag.realtime','tag.share'] },
+      { id: 'temp-email',   url: 'https://tempemail.asia/',                                     order: 60,  theme: 'tool-theme-email',  nameKey: 'tool.email.name', descKey: 'tool.email.desc', tags: ['tag.email','tag.inbox','tag.templink'] },
+      { id: 'temp-code',    url: 'https://tempcode.temputils.com',                              order: 70,  theme: 'tool-theme-code',   nameKey: 'tool.code.name',  descKey: 'tool.code.desc',  tags: ['tag.code','tag.snippet','tag.share'] },
+      { id: 'temp-cron',    url: 'https://tempcron.temputils.com',                              order: 80,  theme: 'tool-theme-cron',   nameKey: 'tool.cron.name',  descKey: 'tool.cron.desc',  tags: ['tag.schedule','tag.cron','tag.code'] },
+      { id: 'temp-video',   url: 'https://github.com/hoa-js/examples/tree/master/tempvideo',   order: 90,  theme: 'tool-theme-video',  nameKey: 'tool.video.name', descKey: 'tool.video.desc', tags: ['tag.video','tag.meeting','tag.share'] },
+      { id: 'temp-voice',   url: 'https://github.com/hoa-js/examples/tree/master/tempvoice',   order: 100, theme: 'tool-theme-voice',  nameKey: 'tool.voice.name', descKey: 'tool.voice.desc', tags: ['tag.voice','tag.audio','tag.share'] },
+      { id: 'coming-soon',  url: '',                                                             order: 130, theme: 'tool-theme-coming', nameKey: 'tool.more.name',  descKey: 'tool.more.desc',  tags: [], coming: true },
+    ].sort((a, b) => a.order - b.order);
+
+    const LIVE_COUNT = TOOLS.filter(t => !t.coming).length;
 
     const ICONS = {
-      'temp-note': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 4.5h6l4 4v11H8z"></path>
-      <path d="M14 4.5v4h4"></path>
-      <path d="M10 13h6"></path>
-      <path d="M10 16h4.5"></path>
-    </svg>
-  `,
-      'temp-table': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 19.5h14"></path>
-      <path d="M8 17v-5"></path>
-      <path d="M12 17V8"></path>
-      <path d="M16 17v-7"></path>
-    </svg>
-  `,
-      'temp-file': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4.5 8.5h5l1.6 2H19.5v7.5H4.5z"></path>
-      <path d="M4.5 8.5V6.5h5l1.6 2H19.5v2"></path>
-    </svg>
-  `,
-      'temp-board': `
-    <svg viewBox="0 0 24 24" aria-hidden="true" class="mixed-icon">
-      <path class="stroke-shape" d="M12 4.5c-4.7 0-8.5 3.4-8.5 7.7 0 2.6 1.7 4.7 4.3 4.7h1.3c.7 0 1.2.5 1.2 1.2 0 .6-.2 1.1-.2 1.6 0 1.1.9 1.8 2.2 1.8 5.1 0 8.2-4.3 8.2-8.7 0-4.7-3.7-8.3-8.5-8.3z"></path>
-      <circle class="fill-shape" cx="8.2" cy="11" r="1.1"></circle>
-      <circle class="fill-shape" cx="11.7" cy="8.8" r="1.1"></circle>
-      <circle class="fill-shape" cx="15.4" cy="10.4" r="1.1"></circle>
-    </svg>
-  `,
-      'temp-email': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="4.5" y="6.5" width="15" height="11" rx="2"></rect>
-      <path d="M5.5 8l6.5 5 6.5-5"></path>
-      <path d="M8.5 16.5h7"></path>
-    </svg>
-  `,
-      'temp-chat': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 7.5h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H10l-4 3v-3H6a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z"></path>
-      <path d="M8.5 11.5h7"></path>
-      <path d="M8.5 14h4.5"></path>
-    </svg>
-  `,
-      'temp-code': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9.5 8l-4 4 4 4"></path>
-      <path d="M14.5 8l4 4-4 4"></path>
-      <path d="M13 5.5l-2 13"></path>
-    </svg>
-  `,
-      'temp-cron': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="6.5"></circle>
-      <path d="M12 8.5v4l2.5 1.5"></path>
-      <path d="M7 6.5 5.5 5"></path>
-      <path d="M17 6.5 18.5 5"></path>
-    </svg>
-  `,
-      'temp-video': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="4.5" y="7.5" width="10" height="9" rx="2"></rect>
-      <path d="m14.5 10 4-2v8l-4-2"></path>
-      <path d="M8.5 10.5v3"></path>
-    </svg>
-  `,
-      'temp-voice': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="9.5" y="5" width="5" height="9" rx="2.5"></rect>
-      <path d="M7 11.5a5 5 0 0 0 10 0"></path>
-      <path d="M12 16.5V19"></path>
-      <path d="M9 19h6"></path>
-    </svg>
-  `,
-      'coming-soon': `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 6v12"></path>
-      <path d="M6 12h12"></path>
-    </svg>
-  `,
+      'temp-note': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h6l4 4v11H8z"/><path d="M14 4.5v4h4"/><path d="M10 13h6"/><path d="M10 16h4.5"/></svg>`,
+      'temp-table': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5h14"/><path d="M8 17v-5"/><path d="M12 17V8"/><path d="M16 17v-7"/></svg>`,
+      'temp-file': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8.5h5l1.6 2H19.5v7.5H4.5z"/><path d="M4.5 8.5V6.5h5l1.6 2H19.5v2"/></svg>`,
+      'temp-board': `<svg viewBox="0 0 24 24" aria-hidden="true" class="mixed-icon"><path class="stroke-shape" d="M12 4.5c-4.7 0-8.5 3.4-8.5 7.7 0 2.6 1.7 4.7 4.3 4.7h1.3c.7 0 1.2.5 1.2 1.2 0 0.6-.2 1.1-.2 1.6 0 1.1.9 1.8 2.2 1.8 5.1 0 8.2-4.3 8.2-8.7 0-4.7-3.7-8.3-8.5-8.3z"/><circle class="fill-shape" cx="8.2" cy="11" r="1.1"/><circle class="fill-shape" cx="11.7" cy="8.8" r="1.1"/><circle class="fill-shape" cx="15.4" cy="10.4" r="1.1"/></svg>`,
+      'temp-email': `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="6.5" width="15" height="11" rx="2"/><path d="M5.5 8l6.5 5 6.5-5"/><path d="M8.5 16.5h7"/></svg>`,
+      'temp-chat': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7.5h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H10l-4 3v-3H6a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z"/><path d="M8.5 11.5h7"/><path d="M8.5 14h4.5"/></svg>`,
+      'temp-code': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8l-4 4 4 4"/><path d="M14.5 8l4 4-4 4"/><path d="M13 5.5l-2 13"/></svg>`,
+      'temp-cron': `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><path d="M12 8.5v4l2.5 1.5"/><path d="M7 6.5 5.5 5"/><path d="M17 6.5 18.5 5"/></svg>`,
+      'temp-video': `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="7.5" width="10" height="9" rx="2"/><path d="m14.5 10 4-2v8l-4-2"/><path d="M8.5 10.5v3"/></svg>`,
+      'temp-voice': `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9.5" y="5" width="5" height="9" rx="2.5"/><path d="M7 11.5a5 5 0 0 0 10 0"/><path d="M12 16.5V19"/><path d="M9 19h6"/></svg>`,
+      'coming-soon': `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12"/><path d="M6 12h12"/></svg>`,
     };
 
-    const LS_KEY = 'temputils_lang';
+    /* ─────────────────────────────────────────
+       THEME
+    ───────────────────────────────────────── */
     const THEME_KEY = 'temputils_theme';
-
-    function detectTheme() {
-      const stored = localStorage.getItem(THEME_KEY);
-      if (stored === 'light' || stored === 'dark') return stored;
+    let currentTheme = (() => {
+      try { const s = localStorage.getItem(THEME_KEY); if (s === 'light' || s === 'dark') return s; } catch(e) {}
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    })();
 
     function applyTheme(theme) {
       currentTheme = theme;
       document.documentElement.dataset.theme = theme;
-      const tb = document.getElementById('themeBtn');
-      if (tb) tb.setAttribute('aria-pressed', String(theme === 'dark'));
     }
 
-    function detectLang() {
-      const stored = localStorage.getItem(LS_KEY);
-      if (stored && T[stored]) return stored;
-      const navLangs = Array.from(navigator.languages || [navigator.language || 'en']);
-      for (const l of navLangs) {
+    /* ─────────────────────────────────────────
+       i18n
+    ───────────────────────────────────────── */
+    const LANG_KEY = 'temputils_lang';
+    let currentLang = (() => {
+      try { const s = localStorage.getItem(LANG_KEY); if (T[s]) return s; } catch(e) {}
+      for (const l of navigator.languages || [navigator.language || 'en']) {
         const c = l.toLowerCase();
         if (c.startsWith('zh-tw') || c.startsWith('zh-hk') || c.startsWith('zh-mo')) return 'zh-TW';
         if (c.startsWith('zh')) return 'zh-CN';
@@ -1908,109 +1547,119 @@
         if (c.startsWith('en')) return 'en';
       }
       return 'en';
-    }
+    })();
 
-    let currentTheme = detectTheme();
-    let currentLang = detectLang();
-
-    function getSortedTools() {
-      return [...TOOLS].sort((a, b) => a.order - b.order);
-    }
-
+    /* ─────────────────────────────────────────
+       RENDER
+    ───────────────────────────────────────── */
     function renderToolCard(tool, t) {
-      const tags = tool.tagKeys.map(tagKey => `<span class="tag accent">${t[tagKey] || tagKey}</span>`).join('');
-      const idLabel = tool.idKey ? (t[tool.idKey] || tool.label) : tool.label;
-      if (tool.status === 'coming') {
-        return `
-      <div class="tool-card coming ${tool.themeKey}">
-        <div class="tool-icon">${ICONS[tool.iconKey] || ''}</div>
-        <div><div class="tool-id">${idLabel}</div><div class="tool-name">${t[tool.nameKey] || tool.label}</div></div>
-        <p class="tool-desc">${t[tool.descKey] || ''}</p>
-        <span class="soon-pill">${t['tool.more.id'] || 'Coming Soon'}</span>
-      </div>
-    `;
+      const tags = tool.tags.map(k => `<span class="tag">${t[k] || k}</span>`).join('');
+      if (tool.coming) {
+        return `<div class="tool-card coming ${tool.theme}">
+          <div class="tool-icon">${ICONS[tool.id]}</div>
+          <div><div class="tool-id">${t['tool.more.badge'] || 'Coming Soon'}</div><div class="tool-name">${t[tool.nameKey]}</div></div>
+          <p class="tool-desc">${t[tool.descKey]}</p>
+          <span class="soon-pill">${t['tool.more.badge'] || 'Coming Soon'}</span>
+        </div>`;
       }
-      return `
-    <a href="${tool.url}" class="tool-card ${tool.themeKey}" target="_blank">
-      <div class="tool-arrow">&#8599;</div>
-      <div class="tool-icon">${ICONS[tool.iconKey] || ''}</div>
-      <div><div class="tool-id">${idLabel}</div><div class="tool-name">${t[tool.nameKey] || tool.label}</div></div>
-      <p class="tool-desc">${t[tool.descKey] || ''}</p>
-      <div class="tool-tags">${tags}</div>
-    </a>
-  `;
-    }
-
-    function renderTools() {
-      const grid = document.getElementById('toolsGrid');
-      const t = T[currentLang];
-      if (!grid || !t) return;
-      grid.innerHTML = getSortedTools().map(tool => renderToolCard(tool, t)).join('');
-    }
-
-    function updateToolCount() {
-      const count = document.getElementById('toolCount');
-      if (!count) return;
-      count.textContent = String(TOOLS.filter(tool => tool.status === 'live').length + '+');
+      return `<a href="${tool.url}" class="tool-card ${tool.theme}" target="_blank" rel="noopener">
+        <div class="tool-arrow">&#8599;</div>
+        <div class="tool-icon">${ICONS[tool.id]}</div>
+        <div><div class="tool-id">${tool.id}</div><div class="tool-name">${t[tool.nameKey]}</div></div>
+        <p class="tool-desc">${t[tool.descKey]}</p>
+        <div class="tool-tags">${tags}</div>
+      </a>`;
     }
 
     function applyLang(code) {
       const t = T[code];
       if (!t) return;
       currentLang = code;
+
+      // Update DOM text nodes
       document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) el.textContent = t[key];
+        const v = t[el.dataset.i18n];
+        if (v != null) el.textContent = v;
       });
-      document.querySelectorAll('[data-i18n-content]').forEach(el => {
-        const key = el.getAttribute('data-i18n-content');
-        if (t[key] !== undefined) el.setAttribute('content', t[key]);
-      });
-      renderTools();
-      updateToolCount();
+
+      // Update page meta
       document.documentElement.lang = code;
-      if (t['meta.title']) document.title = t['meta.title'];
+
+      // Update i18n-content meta tags (OG, Twitter, description, locale)
+      document.querySelectorAll('[data-i18n-content]').forEach(el => {
+        const v = t[el.dataset.i18nContent];
+        if (v != null) el.setAttribute('content', v);
+      });
+
+      // Render tool cards
+      document.getElementById('toolsGrid').innerHTML = TOOLS.map(tool => renderToolCard(tool, t)).join('');
+      document.getElementById('toolCount').textContent = LIVE_COUNT + '+';
+
+      // Update dropdown active state
       document.querySelectorAll('.lang-option').forEach(opt => {
         const active = opt.dataset.code === code;
         opt.classList.toggle('active', active);
+        opt.querySelector('.lang-name').style.color = active ? 'var(--accent)' : '';
       });
     }
 
-    function buildDropdown() {
-      const dd = document.getElementById('langDropdown');
-      dd.innerHTML = LANGS.map(l => `
-    <div class="lang-option${l.code === currentLang ? ' active' : ''}" data-code="${l.code}">
-      <div class="lang-option-left">
-        <span class="lang-flag">${l.flag}</span>
-        <span class="lang-name">${l.native}</span>
-      </div>
-      <span class="lang-check">&#10003;</span>
-    </div>
-  `).join('');
-      dd.querySelectorAll('.lang-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-          const code = opt.dataset.code;
-          localStorage.setItem(LS_KEY, code);
-          applyLang(code);
-          close();
-        });
-      });
+    /* ─────────────────────────────────────────
+       LANG DROPDOWN — built once
+    ───────────────────────────────────────── */
+    const langDropdown = document.getElementById('langDropdown');
+    langDropdown.innerHTML = LANGS.map(l => `
+      <div class="lang-option" data-code="${l.code}">
+        <div class="lang-option-left">
+          <span class="lang-flag">${l.flag}</span>
+          <span class="lang-name">${l.native}</span>
+        </div>
+        <span class="lang-check">&#10003;</span>
+      </div>`).join('');
+
+    langDropdown.addEventListener('click', e => {
+      const opt = e.target.closest('.lang-option');
+      if (!opt) return;
+      const code = opt.dataset.code;
+      try { localStorage.setItem(LANG_KEY, code); } catch(e) {}
+      applyLang(code);
+      closeLang();
+    });
+
+    /* ─────────────────────────────────────────
+       EVENTS
+    ───────────────────────────────────────── */
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langBtn      = document.getElementById('langBtn');
+    const themeBtn     = document.getElementById('themeBtn');
+
+    function closeLang() {
+      langSwitcher.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
     }
 
-    const switcher = document.getElementById('langSwitcher');
-    const btn = document.getElementById('langBtn');
-    const themeBtn = document.getElementById('themeBtn');
+    langBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = langSwitcher.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', String(open));
+    });
 
-    function close() {
-      switcher.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    }
+    themeBtn.addEventListener('click', () => {
+      const next = currentTheme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem(THEME_KEY, next); } catch(e) {}
+      applyTheme(next);
+    });
 
+    document.addEventListener('click', e => { if (!langSwitcher.contains(e.target)) closeLang(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLang(); });
+
+    /* ─────────────────────────────────────────
+       SCROLL REVEAL
+    ───────────────────────────────────────── */
     function initReveal() {
       const items = document.querySelectorAll('.reveal');
       if (!items.length) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-        items.forEach(item => item.classList.add('in-view'));
+        items.forEach(el => el.classList.add('in-view'));
         return;
       }
       const observer = new IntersectionObserver(entries => {
@@ -2020,29 +1669,15 @@
           observer.unobserve(entry.target);
         });
       }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-      items.forEach(item => observer.observe(item));
+      items.forEach(el => observer.observe(el));
     }
 
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const isOpen = switcher.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    themeBtn.addEventListener('click', () => {
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem(THEME_KEY, nextTheme);
-      applyTheme(nextTheme);
-    });
-
-    document.addEventListener('click', e => { if (!switcher.contains(e.target)) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-
+    /* ─────────────────────────────────────────
+       INIT
+    ───────────────────────────────────────── */
     applyTheme(currentTheme);
-    buildDropdown();
     applyLang(currentLang);
     initReveal();
   </script>
 </body>
-
 </html>
